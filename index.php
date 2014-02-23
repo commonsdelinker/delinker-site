@@ -1,5 +1,5 @@
 <?php
-# readable code probably written by Bryan, other code by Siebrand and Steinsplitter
+# readable code probably written by Bryan, other code by Siebrand
 # further tweaked by Ilmari Karonen
 header("Content-Type: text/html; charset=utf-8");
 mb_internal_encoding("UTF-8");
@@ -84,7 +84,7 @@ else
               <li><a href="?replacer=1">Replacements</a></li>
               <li><a href="http://donate.wikimedia.org/">Donate to Wikimedia</a></li>
             </ul>
-          </div><!--/.nav-collapse -->
+          </div>
         </div>
       </div>
     </div>
