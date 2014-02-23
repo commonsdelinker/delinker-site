@@ -99,7 +99,7 @@ else
 #print "img='".$img."'";
 ?></h2>
 <p>All parameters are optional. By default the last 100 delinks are shown.<br />
-<small><a href="http://meta.wikimedia.org/wiki/User:CommonsDelinker">about</a>&nbsp;&mdash;&nbsp;<a href="delinker.txt">delinker log</a>&nbsp;&mdash;&nbsp;<a href="helper.txt">helper log</a>&nbsp;&mdash;&nbsp;<a href="https://jira.toolserver.org/browse/COMMONSDELINKER">bug reports and feature requests</a></p>
+<small><a href="http://meta.wikimedia.org/wiki/User:CommonsDelinker">about</a>&nbsp;&mdash;&nbsp;<a href="delinker.txt">delinker log</a>&nbsp;&mdash;&nbsp;<a href="helper.txt">helper log</a>&nbsp;&mdash;&nbsp;<a href="https://bugzilla.wikimedia.org/enter_bug.cgi?product=Tool%20Labs%20tools&component=Commons%20Delinker">bug reports and feature requests</a></p>
           <div class="hero-unit2">
 <form action="" method="get">
 
@@ -214,7 +214,5 @@ if ($imgname && $count == 0) {
 ?>
 
 </div>
-
-		<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Transitional" height="31" width="88" border="0" /></a></p>
 	</body>
 </html>
