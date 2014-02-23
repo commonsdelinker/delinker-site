@@ -1,5 +1,5 @@
 <?php
-# readable code probably written by Bryan, other code by Siebrand
+# readable code probably written by Bryan, other code by Siebrand and Steinsplitter
 # further tweaked by Ilmari Karonen
 header("Content-Type: text/html; charset=utf-8");
 mb_internal_encoding("UTF-8");
@@ -64,30 +64,53 @@ if ($replacer == 'NOT')
 else
         print "delinks";
 ?></title>
+<link href="bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px;
+      }
+    </style>
 </head>
 <body>
-<div style="float:right"><a href="http://tools.wikimedia.de"><img style="vertical-align:top" border="0" src="http://tools.wikimedia.de/images/wikimedia-toolserver-button.png" alt="Powered by Wikimedia Toolserver"/></a></div><span style='border:2px solid red;display:inline;float:left;padding:2px;font-size:150%;background-color:white'><a target='_blank' href='http://donate.wikimedia.org/'>Donate to Wikimedia!</a></span><center style='width:100%; border-bottom:1px solid #AAAAAA;margin-bottom:3px;padding:2px;background-color:#AAFFAA'>This is a reporting interface for <a href="http://meta.wikimedia.org/wiki/User:CommonsDelinker">CommonsDelinker</a>.<br />&nbsp;<a href="https://jira.toolserver.org/browse/COMMONSDELINKER">Bug reports and feature requests</a></center>
-<h1>CommonsDelinker recent <?php
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+
+          <a class="brand" href="#">CommonsDelinker</a>
+          <div class="nav-collapse collapse">
+		<ul id="toolbar-right" class="nav pull-right">
+              <li><a href="?">Delinks</a></li>
+              <li><a href="?replacer=1">Replacements</a></li>
+              <li><a href="http://donate.wikimedia.org/">Donate to Wikimedia</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+  <div class="container">
+
+<h2>CommonsDelinker recent <?php
 if ($replacer == 'NOT')
         print "replacements";
 else
         print "delinks";
 #print "img='".$img."'";
-?></h1>
+?></h2>
 <p>All parameters are optional. By default the last 100 delinks are shown.<br />
-<small><a href="delinker.txt">delinker log</a>&nbsp;&mdash;&nbsp;<a href="helper.txt">helper log</a>&nbsp;&mdash;&nbsp;
-<a href="?">delinks</a>&nbsp;&mdash;&nbsp;<a href="?replacer=1">replacements</a></small></p>
+<small><a href="http://meta.wikimedia.org/wiki/User:CommonsDelinker">about</a>&nbsp;&mdash;&nbsp;<a href="delinker.txt">delinker log</a>&nbsp;&mdash;&nbsp;<a href="helper.txt">helper log</a>&nbsp;&mdash;&nbsp;<a href="https://jira.toolserver.org/browse/COMMONSDELINKER">bug reports and feature requests</a></p>
+          <div class="hero-unit2">
 <form action="" method="get">
+
 	<table>
 		<tr>
-			<td>&nbsp;</td>
-			<td>File name</td>
-			<td>Type</td>
- 			<td>Show</td>
-			<td>Replacements</td>
+			<td><b>File name:</b></td>
+			<td><b>Type:</b></td>
+ 			<td><b>Show:</b></td>
+			<td><b>Replacements:</b></td>
 		</tr>
 		<tr>
-			<td><input type="submit" value="OK" /></td>
 			<td><input type='text' size='30' name='image' id='image' value="<?php echo htmlspecialchars(strtr($imgname,'_',' ')) ?>"/></td>
 			<td>
 				<select name='status'>
@@ -104,20 +127,26 @@ else
 					<option value='500' <?php if ($num == 500) echo "selected='selected'"; ?>>500</option>
 				</select>
 			</td>
-			<td>
-				<input type='checkbox' name='replacer' value='1' <?php if ($replacer) echo "checked='checked'"; ?> />
+			<td>		<center>
+					<input type='checkbox' name='replacer' value='1' <?php if ($replacer) echo "checked='checked'"; ?> />		
+					</center>
 			</td>
 		</tr>
 	</table>
+			<td><input type="submit" class='btn btn-primary' value="OK" /></td>
 </form>
+</div>
 
-<table border="1">
+<div id="table1">
+
+<table border="1" class="table table-hover">
+
 	<tr>
-		<td>Timestamp</td>
-		<td>File</td>
-		<td>Wiki</td>
-		<td>Page</td>
-		<td>Result</td>
+		<td><b>Timestamp</b></td>
+		<td><b>File</b></td>
+		<td><b>Wiki</b></td>
+		<td><b>Page</b></td>
+		<td><b>Result</b></td>
 	</tr>
 <?php
 
@@ -126,13 +155,13 @@ else
 $codes = array( '%3B', '%40', '%24', '%21', '%2A', '%28', '%29', '%2C', '%2F', '%3A' );
 $chars = array( ';',   '@',   '$',   '!',   '*',   '(',   ')',   ',',   '/',   ':'   );
 
+
 # @TODO: Don't hard code this, read $HOME/.my.cnf instead, FFS
 $dl_pw = posix_getpwuid (posix_getuid ());
 $rp_mycnf = parse_ini_file($dl_pw['dir'] . "/replica.my.cnf");
 $db = mysql_connect('commonswiki.labsdb', $rp_mycnf['user'], $rp_mycnf['password'])
 	or die('Could not connect!');
-unset($rp_mycnf, $dl_pw);
-mysql_select_db('p50380g51602_p_delinker_p');
+ unset($rp_mycnf, $dl_pw);
 $query = "SELECT timestamp, img, wiki, namespace, page_title, status
         FROM delinker WHERE newimg IS $replacer NULL $status
         $image ORDER BY timestamp DESC LIMIT $num";
@@ -182,6 +211,9 @@ if ($imgname && $count == 0) {
 	echo "</p>\n";
 }
 ?>
+
+</div>
+
 		<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Transitional" height="31" width="88" border="0" /></a></p>
 	</body>
 </html>
