@@ -160,11 +160,12 @@ $chars = array( ';',   '@',   '$',   '!',   '*',   '(',   ')',   ',',   '/',   '
 $dl_pw = posix_getpwuid (posix_getuid ());
 $rp_mycnf = parse_ini_file($dl_pw['dir'] . "/replica.my.cnf");
 $db = mysql_connect('commonswiki.labsdb', $rp_mycnf['user'], $rp_mycnf['password'])
-	or die('Could not connect!');
- unset($rp_mycnf, $dl_pw);
+or die('Could not connect!');
+unset($rp_mycnf, $dl_pw);
+mysql_select_db('p50380g51602_p_delinker_p');
 $query = "SELECT timestamp, img, wiki, namespace, page_title, status
-        FROM delinker WHERE newimg IS $replacer NULL $status
-        $image ORDER BY timestamp DESC LIMIT $num";
+FROM delinker WHERE newimg IS $replacer NULL $status
+$image ORDER BY timestamp DESC LIMIT $num";
 $result = mysql_query($query) or die('Query failed!: '.$query);
 
 $count = 0;
