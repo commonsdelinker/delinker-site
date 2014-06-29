@@ -114,10 +114,10 @@ else
 			<td><input type='text' size='30' name='image' id='image' value="<?php echo htmlspecialchars(strtr($imgname,'_',' ')) ?>"/></td>
 			<td>
 				<select name='status'>
-					<option value='' <?php if ($_REQUEST['status'] == '') echo "selected='selected'"; ?>>All</option>
-					<option value='ok' <?php if ($_REQUEST['status'] == 'ok') echo "selected='selected'"; ?>>Success</option>
-					<option value='skipped' <?php if ($_REQUEST['status'] == 'skipped') echo "selected='selected'"; ?>>Skipped</option>
-					<option value='failed' <?php if ($_REQUEST['status'] == 'failed') echo "selected='selected'"; ?>>Failed</option>
+					<option value='' <?php if (@$_REQUEST['status'] == '') echo "selected='selected'"; ?>>All</option>
+					<option value='ok' <?php if (@$_REQUEST['status'] == 'ok') echo "selected='selected'"; ?>>Success</option>
+					<option value='skipped' <?php if (@$_REQUEST['status'] == 'skipped') echo "selected='selected'"; ?>>Skipped</option>
+					<option value='failed' <?php if (@$_REQUEST['status'] == 'failed') echo "selected='selected'"; ?>>Failed</option>
 				</select>
 			</td>
 			<td>
