@@ -200,8 +200,8 @@ mysql_close($db);
 <?php
 if ($imgname && $count == 0) {
 	$imgname2 = preg_replace('/^(File|Image)_*:_*/i', '', $imgname);
-	echo '<p>No ' . ($replacer ? 'replacements' : 'delinks');
-	echo ' found for <i>' . htmlspecialchars(strtr($imgname,'_',' ')) . '</i>.';
+	echo '<div class="alert alert-danger bs-alert-old-docs">No ' . ($replacer ? 'replacements' : 'delinks');
+	echo ' found for <i>' . htmlspecialchars(strtr($imgname,'_',' ')) . '</i>.</div>';
 	if ($imgname2 != $imgname) {
 		echo ' Did you mean to search for <b><a href="';
 		echo '?image=' . htmlspecialchars(urlencode($imgname2));
