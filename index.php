@@ -99,7 +99,7 @@ else
 #print "img='".$img."'";
 ?></h2>
 <p>All parameters are optional. By default the last 100 delinks are shown.<br />
-<small><a href="http://meta.wikimedia.org/wiki/User:CommonsDelinker">about</a>&nbsp;&mdash;&nbsp;<a href="delinker.txt">delinker log</a>&nbsp;&mdash;&nbsp;<a href="helper.txt">helper log</a>&nbsp;&mdash;&nbsp;<a href="https://bugzilla.wikimedia.org/enter_bug.cgi?product=Tool%20Labs%20tools&component=Commons%20Delinker">bug reports and feature requests</a></p>
+<small><a href="http://meta.wikimedia.org/wiki/User:CommonsDelinker">about</a>&nbsp;&mdash;&nbsp;<a href="delinker.txt">delinker log</a>&nbsp;&mdash;&nbsp;<a href="helper.txt">helper log</a>&nbsp;&mdash;&nbsp;<a href="https://phabricator.wikimedia.org/maniphest/task/create/?projects=Tool-Labs-tools-Commons-Delinker">bug reports and feature requests</a></p>
           <div class="hero-unit2">
 <form action="" method="get">
 
