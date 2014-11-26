@@ -160,7 +160,7 @@ $chars = array( ';',   '@',   '$',   '!',   '*',   '(',   ')',   ',',   '/',   '
 # @TODO: Don't hard code this, read $HOME/.my.cnf instead, FFS
 $dl_pw = posix_getpwuid (posix_getuid ());
 $rp_mycnf = parse_ini_file($dl_pw['dir'] . "/replica.my.cnf");
-$db = mysql_connect('commonswiki.labsdb', $rp_mycnf['user'], $rp_mycnf['password'])
+$db = mysql_connect('c2.labsdb', $rp_mycnf['user'], $rp_mycnf['password'])
 or die('Could not connect!');
 unset($rp_mycnf, $dl_pw);
 mysql_select_db('p50380g51602_p_delinker_p');
