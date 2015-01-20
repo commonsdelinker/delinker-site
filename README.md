@@ -1,4 +1,4 @@
 delinker-site
 =============
 
-Web interface for a CommonsDelinker instance.
+Source code is now maintained at https://bitbucket.org/magnusmanske/commons-delinquent.
